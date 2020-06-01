@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Git Repo Searcher</string>
+    <string name="repo_search_hint">search repos…</string>
+    <string name="retry_message">retry</string>
+    <string name="stars_counter">%s stars</string>
+    <string name="forks_counter">%s forks</string>
+    <string name="readme_empty">readme is empty</string>
+
+    <string name="client_name">git_hub_explorer_demo</string>
+    <string name="client_id">198e4b09a410572a6296</string>
+    <string name="client_secret">0b437a3da3ba83bdab09cc80eca1951f70a25ed1</string>
+    <string name="redirect_url">http://example.com/path</string>
+
+    <!-- LoremIpsum -->
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Mauris condimentum urna quis mollis pretium. Mauris non tortor scelerisque,
+        luctus tortor nec, vulputate lacus. Orci varius natoque penatibus et magnis
+        dis parturient montes, nascetur ridiculus mus. Nulla sodales purus in arcu
+        fermentum porta. Vestibulum ac ex augue. Pellentesque habitant morbi tristique
+        senectus et netus et malesuada fames ac turpis egestas. Quisque et ornare dolor.
+        Pellentesque eget nulla erat. Phasellus eget eros cursus, pulvinar nisl lobortis,
+        vulputate odio. Aenean accumsan imperdiet congue.
+    </string>
+    <string name="pull_request">Pull Request</string>
+    <string name="issues">Issues</string>
+
+
+</resources>

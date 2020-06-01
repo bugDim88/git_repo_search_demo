@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/initFragment">
+
+    <fragment
+        android:id="@+id/repoSearchListFragment"
+        android:name="com.example.gitreposearcher.ui.repos_search.RepoSearchListFragment"
+        android:label="fragment_repo_search_list"
+        tools:layout="@layout/fragment_repo_search_list" >
+        <action
+            android:id="@+id/action_repoSearchListFragment_to_repoInfoFragment"
+            app:destination="@id/repoInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/repoInfoFragment"
+        android:name="com.example.gitreposearcher.ui.repo_info.RepoInfoFragment"
+        android:label="fragment_repo_info"
+        tools:layout="@layout/fragment_repo_info" >
+        <argument
+            android:name="repo_owner"
+            app:argType="string" />
+        <argument
+            android:name="repo_name"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/initFragment"
+        android:name="com.example.gitreposearcher.ui.init_page.InitFragment"
+        android:label="fragment_init"
+        tools:layout="@layout/fragment_init" >
+        <action
+            android:id="@+id/action_initFragment_to_repoSearchListFragment"
+            app:destination="@id/repoSearchListFragment" />
+    </fragment>
+</navigation>

@@ -1,0 +1,26 @@
+query RepositoryInfo($name: String!, $owner: String!) {
+  repository(name: $name, owner: $owner) {
+    name
+    description
+    stargazers {
+      totalCount
+    }
+    forks {
+      totalCount
+    }
+    issues {
+      totalCount
+    }
+    owner {
+      login
+    }
+    pullRequests {
+      totalCount
+    }
+    object(expression: "master:README.md") {
+      ... on Blob {
+        text
+      }
+    }
+  }
+}

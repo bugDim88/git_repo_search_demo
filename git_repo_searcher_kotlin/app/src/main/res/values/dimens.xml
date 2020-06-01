@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="big_button_height">62dp</dimen>
+    <dimen name="app_bar_height">56dp</dimen>
+</resources>
