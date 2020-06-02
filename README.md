@@ -15,6 +15,9 @@ Repository contains from 2 projects:
  with flutter implementation
 
 ## Tech-stack
+
+<img src="demo.gif" width="336" align="right" hspace="20">
+
 ### Native implementation
 * Tech-stack
   * [Kotlin](https://kotlinlang.org/) + [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - perform async operations
