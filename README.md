@@ -43,3 +43,17 @@ Repository contains from 2 projects:
   * Clean Architecture
   * BLOC
     
+ ## Authentification
+ To make things work you must get **Git hub api keys** according to this [guide](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/). During registration indicate **Authorization callback URL** parameter as follows `"http://example.com/path"`. 
+ 
+ Also create **client_keys/lib/client_keys.json** file in root folder as follow:
+ 
+ ```json
+ {
+   "client_id":"/* your client id */",
+   "client_secret":"/* your client secret */"
+ }
+ ```
+ 
+ Both application implementation (korlin & flutter) will use **client_keys/lib/client_keys.json** to auth networking with
+ git hub api.
