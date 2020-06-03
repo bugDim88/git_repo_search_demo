@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:gitreposearcherflutter/data/client_keys_provider.dart';
 import 'package:gitreposearcherflutter/data/graphql_client_provider.dart';
 import 'package:gitreposearcherflutter/data/login_prefs.dart';
 import 'package:gitreposearcherflutter/data/main_dio_provider.dart';
@@ -13,6 +14,9 @@ import 'package:injector/injector.dart';
 
 void registerInjections() {
   final injector = Injector.appInstance;
+  // Client keys provider
+  injector.registerSingleton(
+      (injector) => ClientKeyProvider("packages/client_keys/client_keys.json"));
   // Data providers
   injector.registerSingleton<LoginPrefs>((injector) => LoginPrefs());
   injector.registerSingleton((injector) => MainDioProvider());
@@ -32,6 +36,7 @@ void registerInjections() {
           injector.getDependency(), injector.getDependency()));
   injector.registerDependency<SignInUseCase>((injector) => SignInUseCase(
       Dio(),
+      injector.getDependency(),
       injector.getDependency(),
       injector.getDependency(),
       injector.getDependency()));

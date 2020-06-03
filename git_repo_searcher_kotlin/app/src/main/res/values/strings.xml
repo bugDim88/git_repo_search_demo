@@ -6,9 +6,6 @@
     <string name="forks_counter">%s forks</string>
     <string name="readme_empty">readme is empty</string>
 
-    <string name="client_name">git_hub_explorer_demo</string>
-    <string name="client_id">198e4b09a410572a6296</string>
-    <string name="client_secret">0b437a3da3ba83bdab09cc80eca1951f70a25ed1</string>
     <string name="redirect_url">http://example.com/path</string>
 
     <!-- LoremIpsum -->

@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bugdim88.arch_comp_mvi_lib.ViewStateInteractor
+import com.example.gitreposearcher.BuildConfig
 import com.example.gitreposearcher.R
 import com.example.gitreposearcher.ui.init_page.InitVM.ViewIntent
 import com.example.gitreposearcher.ui.init_page.InitVM.ViewState
@@ -80,7 +81,7 @@ class InitFragment : Fragment() {
             .scheme("https")
             .authority("github.com")
             .path("login/oauth/authorize")
-            .appendQueryParameter("client_id", resources.getString(R.string.client_id))
+            .appendQueryParameter("client_id", BuildConfig.client_id)
             .appendQueryParameter("scope", "user,repo,read:org")
             .appendQueryParameter("redirect_uri", redirectUrl)
 

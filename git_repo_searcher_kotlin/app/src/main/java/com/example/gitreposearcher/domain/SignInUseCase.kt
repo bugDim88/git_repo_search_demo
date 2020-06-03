@@ -1,7 +1,6 @@
 package com.example.gitreposearcher.domain
 
-import android.content.Context
-import com.example.gitreposearcher.R
+import com.example.gitreposearcher.BuildConfig
 import com.example.gitreposearcher.checkResponse
 import com.example.gitreposearcher.data.git_api.TokenInterceptor
 import com.example.gitreposearcher.data.shrared_prefs.LoginPrefs
@@ -13,7 +12,6 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 
 class SignInUseCase(
-    private val ctx: Context,
     private val client: OkHttpClient,
     private val loginPrefs: LoginPrefs,
     private val tokenInterceptor: TokenInterceptor
@@ -22,8 +20,8 @@ class SignInUseCase(
         val url = "https://github.com/login/oauth/access_token".toHttpUrlOrNull() ?: return
         val requestBody = FormBody.Builder()
             .add("code", code)
-            .add("client_id", ctx.resources.getString(R.string.client_id))
-            .add("client_secret", ctx.resources.getString(R.string.client_secret))
+            .add("client_id", BuildConfig.client_id)
+            .add("client_secret", BuildConfig.client_secret)
             .build()
         val tokenObject = withContext(Dispatchers.IO) {
             val response =

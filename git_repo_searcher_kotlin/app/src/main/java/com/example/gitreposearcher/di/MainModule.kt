@@ -46,7 +46,7 @@ val mainModule = module {
             .okHttpClient(get())
             .build()
     }
-    factory { SignInUseCase(androidApplication(), get(), get(), get()) }
+    factory { SignInUseCase( get(), get(), get()) }
     factory { CheckSignInStatusUseCase(get(), get()) }
     factory { GetRepoDetailsUseCase(get()) }
     factory { SearchRepoUseCase(get()) }

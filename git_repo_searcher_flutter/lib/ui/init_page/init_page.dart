@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gitreposearcherflutter/data/client_keys_provider.dart';
 import 'package:gitreposearcherflutter/ui/init_page/init_block.dart';
 import 'package:gitreposearcherflutter/ui/repos_search/repo_search_page.dart';
 import 'package:gitreposearcherflutter/ui/strings.dart';
@@ -47,11 +48,16 @@ class _InitPageWidgetState extends State<InitPageWidget> {
     }));
   }
 
-  String _getAuthUrl() => Uri.https("github.com", "login/oauth/authorize", {
-        "client_id": kClientId,
-        "scope": "user, rep,read:org",
-        "redirect_uri": kRedirectUrl
-      }).toString();
+  Future<String> _getAuthUrl() async {
+    final clientKeysModel = await Injector.appInstance
+        .getDependency<ClientKeyProvider>()
+        .loadKeys();
+    return Uri.https("github.com", "login/oauth/authorize", {
+      "client_id": clientKeysModel.clientId,
+      "scope": "user, rep,read:org",
+      "redirect_uri": kRedirectUrl
+    }).toString();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,15 +73,23 @@ class _InitPageWidgetState extends State<InitPageWidget> {
               builder: (context, snapshot) {
                 return Visibility(
                   visible: snapshot.data == true,
-                  child: WebView(
-                    initialUrl: _getAuthUrl(),
-                    javascriptMode: JavascriptMode.unrestricted,
-                    onPageStarted: (url) {
-                      if (url.contains(kRedirectUrl)) {
-                        final code = Uri.parse(url).queryParameters["code"];
-                        block.signIn(code);
-                      }
-                    },
+                  child: FutureBuilder<String>(
+                    initialData: "",
+                    future: _getAuthUrl(),
+                    builder: (ctx, snapshot) =>
+                        snapshot.data?.isNotEmpty == true
+                            ? WebView(
+                                initialUrl: snapshot.data,
+                                javascriptMode: JavascriptMode.unrestricted,
+                                onPageStarted: (url) {
+                                  if (url.contains(kRedirectUrl)) {
+                                    final code =
+                                        Uri.parse(url).queryParameters["code"];
+                                    block.signIn(code);
+                                  }
+                                },
+                              )
+                            : Container(),
                   ),
                 );
               }),

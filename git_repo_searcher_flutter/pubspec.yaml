@@ -34,6 +34,8 @@ dependencies:
   webview_flutter: ^0.3.22
   flutter_markdown: ^0.4.1
   graphql_flutter: ^3.0.1
+  client_keys:
+    path: ../client_keys
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +51,7 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
+    - packages/client_keys/client_keys.json
     - assets/
   fonts:
     - family:  CustomIcons

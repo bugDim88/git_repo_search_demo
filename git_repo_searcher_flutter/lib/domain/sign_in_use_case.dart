@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:gitreposearcherflutter/data/client_keys_provider.dart';
 import 'package:gitreposearcherflutter/data/graphql_client_provider.dart';
 import 'package:gitreposearcherflutter/data/login_prefs.dart';
 import 'package:gitreposearcherflutter/data/main_dio_provider.dart';
@@ -10,17 +11,19 @@ class SignInUseCase extends UseCase<String, bool> {
   final LoginPrefs _loginPrefs;
   final MainDioProvider _dioProvider;
   final GraphqlClientProvider _graphProvider;
+  final ClientKeyProvider _clientKeyProvider;
   final _url = "https://github.com/login/oauth/access_token";
 
-  SignInUseCase(
-      this._service, this._loginPrefs, this._dioProvider, this._graphProvider);
+  SignInUseCase(this._service, this._loginPrefs, this._dioProvider,
+      this._graphProvider, this._clientKeyProvider);
 
   @override
   Future<bool> execute([String params]) async {
+    final clientKeyModel = await _clientKeyProvider.loadKeys();
     final response = await _service.post(_url, queryParameters: {
       "code": params,
-      "client_id": kClientId,
-      "client_secret": kClientSecret
+      "client_id": clientKeyModel.clientId,
+      "client_secret": clientKeyModel.clientSecret
     });
     final accessToken = response.data
         .toString()

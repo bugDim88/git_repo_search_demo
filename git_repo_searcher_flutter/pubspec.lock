@@ -120,6 +120,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+  client_keys:
+    dependency: "direct main"
+    description:
+      path: "../client_keys"
+      relative: true
+    source: path
+    version: "0.0.0"
   code_builder:
     dependency: transitive
     description:
