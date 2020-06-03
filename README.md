@@ -55,5 +55,5 @@ Repository contains from 2 projects:
  }
  ```
  
- Both application implementation (korlin & flutter) will use **client_keys/lib/client_keys.json** to auth networking with
+ Both application implementation (kotlin & flutter) will use **client_keys/lib/client_keys.json** to auth networking with
  git hub api.
